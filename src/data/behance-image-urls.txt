@@ -1,0 +1,14 @@
+assets/images/behance/01-20241018-.jpg	https://mir-s3-cdn-cf.behance.net/projects/original/c31ea0216540203.Y3JvcCw3OTkxLDYyNTEsMjI1NSww.jpg
+assets/images/behance/02-Landing-page-Design-color-contact-lens.jpg	https://mir-s3-cdn-cf.behance.net/projects/original/29db84140949083.Y3JvcCwzMjE5LDI1MTgsMCwzODk2.jpg
+assets/images/behance/03-Eyewear-Landing-Page-Design.jpg	https://mir-s3-cdn-cf.behance.net/projects/original/90ebbe139335911.Y3JvcCwxMDk1LDg1Nyw0MCww.jpg
+assets/images/behance/04-Color-contrast-lens-Landing-page-Design.jpg	https://mir-s3-cdn-cf.behance.net/projects/original/cd1675139328113.Y3JvcCwxMDE1LDc5NCwxMDAsMA.jpg
+assets/images/behance/05-Logo-Design-Marketlong-Fresh-.jpg	https://mir-s3-cdn-cf.behance.net/projects/original/37ac88136767675.Y3JvcCwxOTk5LDE1NjQsMCwzODY.jpg
+assets/images/behance/06--Wood-Music-box.png	https://mir-s3-cdn-cf.behance.net/projects/original/bf9839125424853.Y3JvcCwxMzgwLDEwODAsMjIyLDA.png
+assets/images/behance/07-BANNER-Illustration.gif	https://mir-s3-cdn-cf.behance.net/projects/original/f72743124789997.Y3JvcCwxMDgwLDg0NCwwLDExNw.gif
+assets/images/behance/08--composed-photo.png	https://mir-s3-cdn-cf.behance.net/projects/original/d1621f123483253.62add8c26a28c.png
+assets/images/behance/09--Landing-Page-Design-Baby-Body-wash.jpg	https://mir-s3-cdn-cf.behance.net/projects/original/4bf99b123101167.Y3JvcCwxMjgzLDEwMDMsMzIwLDI0Nw.jpg
+assets/images/behance/10-Collagen-Packaging-Design-.jpg	https://mir-s3-cdn-cf.behance.net/projects/original/c6f4b9121241289.Y3JvcCw5NTgsNzUwLDE5Niww.jpg
+assets/images/behance/11-Master-Tai-Chicken-Essence-Packaging-Design-.jpg	https://mir-s3-cdn-cf.behance.net/projects/original/f00b4a121306305.Y3JvcCwxMTkyLDkzMyw2NCww.jpg
+assets/images/behance/12-_Landing-page-Design.jpg	https://mir-s3-cdn-cf.behance.net/projects/original/563caf121143993.Y3JvcCw4MTksNjQwLDcwLDI4Ng.jpg
+assets/images/behance/13-IC-STUDIO-VI-DESIGN.jpg	https://mir-s3-cdn-cf.behance.net/projects/original/314689120740315.Y3JvcCwzMTcxLDI0ODEsMTQxLDA.jpg
+assets/images/behance/14-NARRATE-business-card-design.jpg	https://mir-s3-cdn-cf.behance.net/projects/original/85ecfb117426693.Y3JvcCw5OTMsNzc3LDExMCww.jpg

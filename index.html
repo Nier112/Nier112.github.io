@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ZM Portfolio</title>
+    <meta
+      name="description"
+      content="ZM 的品牌識別、包裝、網頁設計、攝影合成與視覺設計作品集。"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!--
+      Huashu Design assumptions:
+      1. This portfolio should make the work visible immediately, not behave like a marketing landing page.
+      2. Behance public metadata is preserved as source URL, year, category, stats and local cover.
+      3. The three user-specified websites are added as web design works with live screenshots captured locally.
+      4. When Behance project pages did not expose reliable descriptive copy, the design avoids invented claims.
+    -->
+    <div class="logo-intro" aria-hidden="true">
+      <div class="intro-stage" id="intro-stage">
+        <!-- Line 1: NIER -->
+        <div class="intro-line" id="intro-line-nier">
+          <div class="lw"><span class="intro-letter">N</span></div>
+          <div class="lw"><span class="intro-letter">I</span></div>
+          <div class="lw"><span class="intro-letter">E</span></div>
+          <div class="lw"><span class="intro-letter">R</span></div>
+        </div>
+        <!-- Line 2: ZooM -->
+        <div class="intro-line intro-line-zoom" id="intro-line-zoom">
+          <div class="lw"><span class="intro-letter">Z</span></div>
+          <div class="lw"><span class="intro-letter intro-small">o</span></div>
+          <div class="lw"><span class="intro-letter intro-small">o</span></div>
+          <div class="lw"><span class="intro-letter">M</span></div>
+        </div>
+        <!-- Deco line -->
+        <div class="intro-deco-line" id="intro-deco-line"></div>
+        <!-- Tagline -->
+        <div class="intro-tagline" id="intro-tagline">Visual · Design · Portfolio</div>
+      </div>
+    </div>
+
+    <header class="site-header" data-elevated="false">
+      <a class="brand-mark" href="#top" aria-label="ZM">
+        <span>ZM</span>
+      </a>
+      <nav class="site-nav" aria-label="主要導覽">
+        <a href="#work">WORK</a>
+        <a href="#profile">INFO</a>
+      </nav>
+    </header>
+    <div class="scroll-progress" aria-hidden="true"></div>
+
+    <main id="top">
+      <section class="hero-section" aria-label="Hero image gallery">
+        <div class="hero-motion-field" aria-hidden="true">
+          <span class="field-line field-line-a"></span>
+          <span class="field-line field-line-b"></span>
+          <span class="field-line field-line-c"></span>
+          <span class="field-type field-type-b">PORTFOLIO</span>
+        </div>
+        <div class="hero-copy">
+          <p class="eyebrow">Visual Portfolio · 2021–2026</p>
+          <p class="hero-lede">
+            品牌識別、包裝視覺、銷售頁與網頁設計作品集。將 Behance 既有作品與新增網站專案整理成可快速瀏覽、可深入檢視的設計檔案室。
+          </p>
+          <div class="hero-actions">
+            <a class="primary-action" href="#work">查看作品</a>
+            <a class="secondary-action" href="https://www.behance.net/sc8154628b5b8" target="_blank" rel="noreferrer">Behance</a>
+          </div>
+        </div>
+        <div class="aperture-stage" aria-label="精選作品影像舞台">
+          <div class="aperture-label">Visual Portfolio · Selected Works</div>
+          <div class="aperture-strip" id="aperture-strip"></div>
+        </div>
+      </section>
+
+      <section class="profile-strip" id="profile" aria-label="設計師資訊">
+        <div>
+          <span class="metric-value" id="work-count">17</span>
+          <span class="metric-label">Works archived</span>
+        </div>
+        <div>
+          <span class="metric-value">3</span>
+          <span class="metric-label">Added web projects</span>
+        </div>
+        <div>
+          <span class="metric-value">Ps Ai Ae</span>
+          <span class="metric-label">Primary tools</span>
+        </div>
+        <div>
+          <span class="metric-value">Freelance · Fulltime</span>
+          <span class="metric-label">Availability</span>
+        </div>
+      </section>
+
+      <section class="work-section" id="work" aria-label="作品">
+        <div class="section-heading">
+          <p class="eyebrow">Selected Archive</p>
+          <p>
+            Behance 公開資料與新增網站作品整合成完整索引，保留來源、年份、分類與公開統計。
+          </p>
+        </div>
+        <div class="filter-bar" id="filter-bar" aria-label="作品分類"></div>
+        <div class="work-grid" id="work-grid"></div>
+      </section>
+    </main>
+
+    <dialog class="project-dialog" id="project-dialog">
+      <button class="dialog-close" id="dialog-close" aria-label="關閉">×</button>
+      <div class="dialog-media">
+        <img id="dialog-image" alt="" />
+      </div>
+      <div class="dialog-content">
+        <p class="eyebrow" id="dialog-category"></p>
+        <h3 id="dialog-title"></h3>
+        <p id="dialog-summary"></p>
+        <dl class="dialog-meta">
+          <div>
+            <dt>Year</dt>
+            <dd id="dialog-year"></dd>
+          </div>
+          <div>
+            <dt>Views</dt>
+            <dd id="dialog-views"></dd>
+          </div>
+          <div>
+            <dt>Appreciations</dt>
+            <dd id="dialog-appreciations"></dd>
+          </div>
+        </dl>
+        <ul id="dialog-details"></ul>
+        <a class="source-link" id="dialog-source" target="_blank" rel="noreferrer">開啟來源</a>
+      </div>
+    </dialog>
+
+    <script src="vendor/gsap.min.js"></script>
+    <script src="vendor/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script>
+    <script src="src/data/portfolio-data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
