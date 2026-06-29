@@ -134,6 +134,27 @@ function projectImage(project) {
   return project.localCover || "assets/images/web-works/greattop.png";
 }
 
+// Split a mixed Chinese/English title into a main (Chinese) display and an English sub-label.
+function parseTitleParts(rawTitle) {
+  const hasZh = /[一-鿿㐀-䶿]/.test(rawTitle);
+  if (!hasZh) return { main: rawTitle.trim(), sub: '' };
+
+  // Extract English words (letter-starting sequences) for the sub-label
+  const engWords = rawTitle.match(/[a-zA-Z][a-zA-Z0-9]*(?:\s+[a-zA-Z][a-zA-Z0-9]*)*/g) || [];
+  const sub = engWords.join(' ').trim();
+
+  // Build the main display: strip ASCII alphanumeric, normalize separators
+  const main = rawTitle
+    .replace(/[a-zA-Z0-9]+/g, '')
+    .replace(/[|_]/g, ' ')
+    .replace(/\s*[-—·]\s*/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .replace(/^[\s.\-—·|,]+|[\s.\-—·|,]+$/g, '');
+
+  return { main: main || rawTitle, sub: sub.length > 3 ? sub : '' };
+}
+
 function renderGrid() {
   const projects = state.filter === "All"
     ? state.projects
@@ -146,16 +167,16 @@ function renderGrid() {
     card.type = "button";
     card.dataset.featured = String(project.added);
     card.dataset.motionDepth = String((cardIndex % 5) + 1);
+    const { main: titleMain, sub: titleSub } = parseTitleParts(project.title);
     card.innerHTML = `
       <div class="card-image">
         <img src="${projectImage(project)}" alt="${escapeHtml(project.title)}" loading="lazy">
       </div>
       <div class="card-body">
-        <div class="card-meta">
-          <span>${escapeHtml(project.category)}</span>
+        ${titleSub ? `<div class="card-en-wrap"><p class="card-en">${escapeHtml(titleSub)}</p></div>` : ''}
+        <div class="card-title-wrap">
+          <h3 class="card-title">${escapeHtml(titleMain)}</h3>
         </div>
-        <h3 class="card-title">${escapeHtml(project.title)}</h3>
-        <p class="card-summary">${escapeHtml(project.summary)}</p>
       </div>
     `;
     card.addEventListener("click", () => openProject(project));
@@ -592,66 +613,113 @@ function animateCards() {
   if (!hasGsap || prefersReducedMotion) return;
 
   const cards = gsap.utils.toArray(".work-card");
-  gsap.set(cards, { clearProps: "all" });
 
-  // Line-expand entry: each card starts as a thin horizontal sliver and opens outward
+  // Clear any previous inline styles from card and its key children
+  gsap.set(cards, { clearProps: "all" });
+  gsap.set(".card-title, .card-en, .card-image, .card-image img", { clearProps: "all" });
+
+  // ① LINE-EXPAND — group entrance: card clips open from horizontal centre sliver
   gsap.fromTo(
     cards,
-    { clipPath: "inset(49% 0 49% 0)", opacity: 1 },
+    { clipPath: "inset(49% 0 49% 0)" },
     {
       clipPath: "inset(0% 0 0% 0%)",
-      duration: 0.82,
-      stagger: 0.06,
+      duration: 0.85,
+      stagger: { each: 0.055, ease: "power1.inOut" },
       ease: "expo.out",
       scrollTrigger: { trigger: ".work-grid", start: "top 82%", once: true },
     }
   );
 
-  cards.forEach((card) => {
-    const image = card.querySelector(".card-image img");
-    const depth = Number(card.dataset.motionDepth || 1);
+  cards.forEach((card, i) => {
+    const image   = card.querySelector(".card-image img");
+    const cardImg = card.querySelector(".card-image");
+    const title   = card.querySelector(".card-title");
+    const en      = card.querySelector(".card-en");
+    const depth   = Number(card.dataset.motionDepth || 1);
+    const isEven  = i % 2 === 0;
+    const stBase  = { trigger: card, start: "top 89%", once: true };
 
-    // Parallax drift on scroll
+    // ② SKEW + SCALE SETTLE — card enters with slight skewX and small scale, settles cleanly
+    gsap.fromTo(card,
+      { skewX: isEven ? 2 : -2, scale: 0.96 },
+      { skewX: 0, scale: 1, duration: 0.72, ease: "power3.out",
+        scrollTrigger: stBase }
+    );
+
+    // ③ IMAGE ZOOM BURST — inner image starts oversized and settles to fill
+    gsap.fromTo(image,
+      { scale: 1.2 },
+      { scale: 1, duration: 0.9, ease: "expo.out",
+        scrollTrigger: stBase }
+    );
+
+    // ④ TITLE WIPE FROM BOTTOM — h3 rises out of its overflow:hidden wrapper
+    if (title) {
+      gsap.fromTo(title,
+        { y: "104%" },
+        { y: "0%", duration: 0.62, ease: "expo.out",
+          scrollTrigger: { trigger: card, start: "top 87%", once: true } }
+      );
+    }
+
+    // ⑤ EN SUB X-SLIDE — English label slides in from the left
+    if (en) {
+      gsap.fromTo(en,
+        { x: -22, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.5, ease: "power2.out",
+          scrollTrigger: { trigger: card, start: "top 87%", once: true } }
+      );
+    }
+
+    // ⑥ ALTERNATING IMAGE BOX SLIDE — card-image div enters from opposite sides for odd/even
+    gsap.fromTo(cardImg,
+      { x: isEven ? 16 : -16, opacity: 0 },
+      { x: 0, opacity: 1, duration: 0.58, ease: "power2.out",
+        scrollTrigger: { trigger: card, start: "top 91%", once: true } }
+    );
+
+    // ⑦ SCROLL PARALLAX Y — card drifts at different rates based on grid position
     gsap.to(card, {
-      y: depth % 2 === 0 ? -18 : 18,
+      y: depth % 2 === 0 ? -20 : 20,
       ease: "none",
-      scrollTrigger: {
-        trigger: card,
-        start: "top bottom",
-        end: "bottom top",
-        scrub: true,
-      },
+      scrollTrigger: { trigger: card, start: "top bottom", end: "bottom top", scrub: true },
     });
 
+    // ⑧ SCROLL PARALLAX — inner image yPercent for independent layer depth
     gsap.to(image, {
-      yPercent: depth % 2 === 0 ? -4 : 4,
+      yPercent: depth % 2 === 0 ? -5 : 5,
       ease: "none",
-      scrollTrigger: {
-        trigger: card,
-        start: "top bottom",
-        end: "bottom top",
-        scrub: true,
-      },
+      scrollTrigger: { trigger: card, start: "top bottom", end: "bottom top", scrub: true },
     });
 
-    // Hover: reveal full colour + lift
+    // ⑨ HOVER — 3D lift + colour reveal + image overscale
     card.addEventListener("pointerenter", () => {
-      gsap.to(card, { y: -8, rotateX: 1.5, rotateY: -1.2, duration: 0.32, ease: "power2.out" });
-      gsap.to(image, {
-        scale: 1.055,
-        filter: "grayscale(0) contrast(1) brightness(1)",
-        duration: 0.44,
-        ease: "power2.out",
+      gsap.to(card, {
+        y: -8, rotateX: 1.5, rotateY: isEven ? -1.4 : 1.4,
+        boxShadow: "0 20px 52px rgba(0,0,0,0.13)",
+        duration: 0.3, ease: "power2.out",
       });
+      gsap.to(image, {
+        scale: 1.06,
+        filter: "grayscale(0) contrast(1) brightness(1)",
+        duration: 0.44, ease: "power2.out",
+      });
+      // ⑩ HOVER LETTER SPACING — title tracks subtly wider on hover
+      if (title) gsap.to(title, { letterSpacing: "0.035em", duration: 0.38, ease: "power2.out" });
     });
     card.addEventListener("pointerleave", () => {
-      gsap.to(card, { y: 0, rotateX: 0, rotateY: 0, duration: 0.42, ease: "power2.out" });
+      gsap.to(card, {
+        y: 0, rotateX: 0, rotateY: 0,
+        boxShadow: "none",
+        duration: 0.44, ease: "power2.out",
+      });
       gsap.to(image, {
         scale: 1,
         filter: "grayscale(1) contrast(1.04) brightness(1)",
-        duration: 0.52,
-        ease: "power2.out",
+        duration: 0.52, ease: "power2.out",
       });
+      if (title) gsap.to(title, { letterSpacing: "0em", duration: 0.36, ease: "power2.out" });
     });
   });
 

@@ -540,7 +540,35 @@ h3 {
 }
 
 .card-body {
-  padding: 20px;
+  padding: 16px 18px 18px;
+}
+
+.card-en-wrap {
+  overflow: hidden;
+}
+
+.card-en {
+  color: var(--muted);
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  margin: 0 0 6px;
+  text-transform: uppercase;
+  will-change: transform, opacity;
+}
+
+.card-title-wrap {
+  overflow: hidden;
+}
+
+.card-title {
+  font-family: "Noto Sans Traditional Chinese", "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", sans-serif;
+  font-size: clamp(20px, 2.1vw, 34px);
+  line-height: 1.1;
+  margin: 0;
+  text-wrap: pretty;
+  will-change: transform;
 }
 
 .card-meta {
@@ -552,14 +580,6 @@ h3 {
   letter-spacing: 0.08em;
   margin-bottom: 12px;
   text-transform: uppercase;
-}
-
-.card-title {
-  font-family: "Noto Sans Traditional Chinese", "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", sans-serif;
-  font-size: clamp(24px, 2.4vw, 38px);
-  line-height: 1.08;
-  margin: 0;
-  text-wrap: pretty;
 }
 
 .split-char,
