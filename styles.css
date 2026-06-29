@@ -351,14 +351,18 @@ h3 {
   overflow: hidden;
   padding: 0;
   position: relative;
+  /* 提前 GPU 提升，避免動畫啟動時的 layer promotion 抖動 */
+  will-change: transform, opacity;
+  transform: translateZ(0);
 }
 
 .aperture-frame img {
-  filter: grayscale(1) contrast(1.05) brightness(0.88);
   height: 100%;
   object-fit: cover;
-  transform: scale(1.03);
+  /* translateZ 讓 img 自己有獨立 composited layer，filter 不影響 frame 的動畫 */
+  transform: scale(1.03) translateZ(0);
   width: 100%;
+  will-change: transform;
 }
 
 .aperture-caption {
@@ -517,20 +521,21 @@ h3 {
 
 
 .card-image {
-  align-items: center;
   aspect-ratio: 16 / 10;
-  background: #ffffff;
-  display: flex;
-  justify-content: center;
+  background: var(--surface);
   overflow: hidden;
-  padding: 14px;
+  position: relative;
+  width: 100%;
 }
 
 .card-image img {
+  display: block;
   filter: grayscale(1) contrast(1.04);
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center top;
   transition: filter 0.5s ease;
+  width: 100%;
   will-change: filter, transform;
 }
 

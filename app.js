@@ -86,6 +86,7 @@ function loadData() {
 function renderApertureStrip() {
   if (!els.apertureStrip) return;
   els.apertureStrip.innerHTML = "";
+  const frames = [];
   state.projects.slice(0, 4).forEach((project, index) => {
     const frame = document.createElement("button");
     frame.className = "aperture-frame";
@@ -94,12 +95,17 @@ function renderApertureStrip() {
     frame.setAttribute("aria-label", project.title);
     const caption = project.category || "";
     frame.innerHTML = `
-      <img src="${projectImage(project)}" alt="${escapeHtml(project.title)}">
+      <img src="${projectImage(project)}" alt="${escapeHtml(project.title)}" decoding="async">
       <span class="aperture-caption">${escapeHtml(caption)}</span>
     `;
     frame.addEventListener("click", () => openProject(project));
     els.apertureStrip.append(frame);
+    frames.push(frame);
   });
+
+  // 預解碼：確保圖片在動畫前已 decode，避免 decode 佔用 main thread 造成掉幀
+  const imgs = [...els.apertureStrip.querySelectorAll("img")];
+  Promise.all(imgs.map((img) => img.decode().catch(() => {}))).catch(() => {});
 }
 
 function getCategories() {
@@ -408,15 +414,15 @@ function runPageMotion() {
   gsap.set(".field-line", { scaleX: 0 });
   gsap.set(".field-type", { opacity: 0, y: 28 });
   gsap.set(".aperture-caption .split-char", { yPercent: 110, opacity: 0 });
+  // 不用 clipPath（main-thread repaint）→ 改純 GPU 友善的 y + opacity + scale
   gsap.set(".aperture-frame", {
-    x: -42,
-    y: 28,
+    y: 40,
     opacity: 0,
-    clipPath: "inset(0 100% 0 0)",
-    rotate: 0,
-    scale: 0.985,
-    transformOrigin: "left center",
+    scale: 0.92,
+    force3D: true,
   });
+  // 動畫前先清掉 img filter，讓 frame 動畫期間不觸發昂貴的 filter repaint
+  gsap.set(".aperture-frame img", { filter: "none" });
 
   const hero = gsap.timeline({ delay: 3.5, defaults: { ease: "power3.out" } });
   hero
@@ -440,14 +446,19 @@ function runPageMotion() {
     .to(".field-line", { scaleX: 1, duration: 0.74, stagger: 0.08 }, "-=0.72")
     .to(".field-type", { opacity: 1, y: 0, duration: 0.84, stagger: 0.08 }, "-=0.58")
     .to(".aperture-frame", {
-      x: 0,
       y: 0,
       opacity: 1,
-      clipPath: "inset(0 0% 0 0)",
       scale: 1,
-      duration: 0.86,
-      stagger: { each: 0.16, from: "start" },
+      duration: 0.78,
+      stagger: { each: 0.15, from: "start" },
       ease: "expo.out",
+      force3D: true,
+      // 動畫全部完成後才套上 grayscale，避免 filter 在動畫中增加 repaint 負擔
+      onComplete() {
+        gsap.set(".aperture-frame img", {
+          filter: "grayscale(1) contrast(1.05) brightness(0.88)",
+        });
+      },
     }, "-=0.82")
     .to(".aperture-caption .split-char", {
       yPercent: 0,
