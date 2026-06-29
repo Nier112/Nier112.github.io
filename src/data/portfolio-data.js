@@ -19,7 +19,7 @@ window.PORTFOLIO_DATA = {
         "b": 16
       },
       "coverUrl": "https://mir-s3-cdn-cf.behance.net/projects/original/c31ea0216540203.Y3JvcCw3OTkxLDYyNTEsMjI1NSww.jpg",
-      "localCover": "assets/images/behance/01-20241018-.jpg",
+      "localCover": "assets/images/behance/01-20241018-.webp",
       "summary": "Privacy",
       "details": [
         "Privacy",
@@ -53,7 +53,7 @@ window.PORTFOLIO_DATA = {
         "b": 138
       },
       "coverUrl": "https://mir-s3-cdn-cf.behance.net/projects/original/29db84140949083.Y3JvcCwzMjE5LDI1MTgsMCwzODk2.jpg",
-      "localCover": "assets/images/behance/02-Landing-page-Design-color-contact-lens.jpg",
+      "localCover": "assets/images/behance/02-Landing-page-Design-color-contact-lens.webp",
       "summary": "Privacy",
       "details": [
         "Privacy",
@@ -87,7 +87,7 @@ window.PORTFOLIO_DATA = {
         "b": 177
       },
       "coverUrl": "https://mir-s3-cdn-cf.behance.net/projects/original/90ebbe139335911.Y3JvcCwxMDk1LDg1Nyw0MCww.jpg",
-      "localCover": "assets/images/behance/03-Eyewear-Landing-Page-Design.jpg",
+      "localCover": "assets/images/behance/03-Eyewear-Landing-Page-Design.webp",
       "summary": "Privacy",
       "details": [
         "Privacy",
@@ -121,7 +121,7 @@ window.PORTFOLIO_DATA = {
         "b": 240
       },
       "coverUrl": "https://mir-s3-cdn-cf.behance.net/projects/original/cd1675139328113.Y3JvcCwxMDE1LDc5NCwxMDAsMA.jpg",
-      "localCover": "assets/images/behance/04-Color-contrast-lens-Landing-page-Design.jpg",
+      "localCover": "assets/images/behance/04-Color-contrast-lens-Landing-page-Design.webp",
       "summary": "Privacy",
       "details": [
         "Privacy",
@@ -155,7 +155,7 @@ window.PORTFOLIO_DATA = {
         "b": 129
       },
       "coverUrl": "https://mir-s3-cdn-cf.behance.net/projects/original/37ac88136767675.Y3JvcCwxOTk5LDE1NjQsMCwzODY.jpg",
-      "localCover": "assets/images/behance/05-Logo-Design-Marketlong-Fresh-.jpg",
+      "localCover": "assets/images/behance/05-Logo-Design-Marketlong-Fresh-.webp",
       "summary": "Privacy",
       "details": [
         "Privacy",
@@ -189,7 +189,7 @@ window.PORTFOLIO_DATA = {
         "b": 243
       },
       "coverUrl": "https://mir-s3-cdn-cf.behance.net/projects/original/bf9839125424853.Y3JvcCwxMzgwLDEwODAsMjIyLDA.png",
-      "localCover": "assets/images/behance/06--Wood-Music-box.png",
+      "localCover": "assets/images/behance/06--Wood-Music-box.webp",
       "summary": "Privacy",
       "details": [
         "Privacy",
@@ -257,7 +257,7 @@ window.PORTFOLIO_DATA = {
         "b": 13
       },
       "coverUrl": "https://mir-s3-cdn-cf.behance.net/projects/original/d1621f123483253.62add8c26a28c.png",
-      "localCover": "assets/images/behance/08--composed-photo.png",
+      "localCover": "assets/images/behance/08--composed-photo.webp",
       "summary": "Privacy",
       "details": [
         "Privacy",
@@ -291,7 +291,7 @@ window.PORTFOLIO_DATA = {
         "b": 200
       },
       "coverUrl": "https://mir-s3-cdn-cf.behance.net/projects/original/4bf99b123101167.Y3JvcCwxMjgzLDEwMDMsMzIwLDI0Nw.jpg",
-      "localCover": "assets/images/behance/09--Landing-Page-Design-Baby-Body-wash.jpg",
+      "localCover": "assets/images/behance/09--Landing-Page-Design-Baby-Body-wash.webp",
       "summary": "Privacy",
       "details": [
         "Privacy",
@@ -325,7 +325,7 @@ window.PORTFOLIO_DATA = {
         "b": 38
       },
       "coverUrl": "https://mir-s3-cdn-cf.behance.net/projects/original/c6f4b9121241289.Y3JvcCw5NTgsNzUwLDE5Niww.jpg",
-      "localCover": "assets/images/behance/10-Collagen-Packaging-Design-.jpg",
+      "localCover": "assets/images/behance/10-Collagen-Packaging-Design-.webp",
       "summary": "Privacy",
       "details": [
         "Privacy",
@@ -359,7 +359,7 @@ window.PORTFOLIO_DATA = {
         "b": 201
       },
       "coverUrl": "https://mir-s3-cdn-cf.behance.net/projects/original/f00b4a121306305.Y3JvcCwxMTkyLDkzMyw2NCww.jpg",
-      "localCover": "assets/images/behance/11-Master-Tai-Chicken-Essence-Packaging-Design-.jpg",
+      "localCover": "assets/images/behance/11-Master-Tai-Chicken-Essence-Packaging-Design-.webp",
       "summary": "Privacy",
       "details": [
         "Privacy",
@@ -393,7 +393,7 @@ window.PORTFOLIO_DATA = {
         "b": 218
       },
       "coverUrl": "https://mir-s3-cdn-cf.behance.net/projects/original/563caf121143993.Y3JvcCw4MTksNjQwLDcwLDI4Ng.jpg",
-      "localCover": "assets/images/behance/12-_Landing-page-Design.jpg",
+      "localCover": "assets/images/behance/12-_Landing-page-Design.webp",
       "summary": "Privacy",
       "details": [
         "Privacy",
@@ -427,7 +427,7 @@ window.PORTFOLIO_DATA = {
         "b": 42
       },
       "coverUrl": "https://mir-s3-cdn-cf.behance.net/projects/original/314689120740315.Y3JvcCwzMTcxLDI0ODEsMTQxLDA.jpg",
-      "localCover": "assets/images/behance/13-IC-STUDIO-VI-DESIGN.jpg",
+      "localCover": "assets/images/behance/13-IC-STUDIO-VI-DESIGN.webp",
       "summary": "Privacy",
       "details": [
         "Privacy",
@@ -461,7 +461,7 @@ window.PORTFOLIO_DATA = {
         "b": 20
       },
       "coverUrl": "https://mir-s3-cdn-cf.behance.net/projects/original/85ecfb117426693.Y3JvcCw5OTMsNzc3LDExMCww.jpg",
-      "localCover": "assets/images/behance/14-NARRATE-business-card-design.jpg",
+      "localCover": "assets/images/behance/14-NARRATE-business-card-design.webp",
       "summary": "Privacy",
       "details": [
         "Privacy",
@@ -506,7 +506,7 @@ window.PORTFOLIO_DATA = {
         "直管燈和平板燈怎麼選",
         "從閃爍到穩亮：實戰掌握調光開關配線指南"
       ],
-      "localCover": "assets/images/web-works/greattop.png",
+      "localCover": "assets/images/web-works/greattop.webp",
       "sourceUrl": "https://greattop-tw.com/zh_tw/",
       "year": 2026
     },
@@ -538,7 +538,7 @@ window.PORTFOLIO_DATA = {
         "高品質調光器",
         "LIGHTING"
       ],
-      "localCover": "assets/images/web-works/matsuo.png",
+      "localCover": "assets/images/web-works/matsuo.webp",
       "sourceUrl": "https://www.matsuo.com.tw/",
       "year": 2026
     },
@@ -570,7 +570,7 @@ window.PORTFOLIO_DATA = {
         "Mitra Pencahayaan",
         "Tepercaya Anda"
       ],
-      "localCover": "assets/images/web-works/hikariro.png",
+      "localCover": "assets/images/web-works/hikariro.webp",
       "sourceUrl": "https://hikariro.id/",
       "year": 2026
     }
